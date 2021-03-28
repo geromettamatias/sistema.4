@@ -1,0 +1,38 @@
+:root{
+	--dark:#2A4552;
+	--dark-x:#1e2126;
+	--light:#ffffff;
+}
+
+
+body{
+	font-family: 'Spartan', 'sans-serif';
+	font-weight: 300;
+	color: var(--light);
+}
+
+.bg-dark { background-color: var(--dark) !important; }  
+.bg-dark-x {background-color: var(--dark-x);}
+
+.form-control, .btn {
+	min-height: 3.125rem;
+	line-height: initial;
+}
+
+.img-0 {
+	background-image: url('3.gif');
+	background-size: cover;
+	background-position: center;
+}
+
+.img-1 {
+	background-image: url('2.gif');
+	background-size: cover;
+	background-position: center;
+}
+ .img-2 {
+	background-image: url('0.gif');
+	background-size: cover;
+	background-position: center;
+}
+

@@ -1,0 +1,45 @@
+<?php
+include_once '../bd/conexion.php';
+$objeto = new Conexion();
+$conexion = $objeto->Conectar();
+// Recepción de los datos enviados mediante POST desde el JS   
+ 
+
+$id_mensaje = (isset($_POST['id_mensaje'])) ? $_POST['id_mensaje'] : '';
+
+$datos = (isset($_POST['datos'])) ? $_POST['datos'] : '';
+$opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
+
+
+
+switch($opcion){
+    case 1: //alta
+        $consulta = "INSERT INTO `mensajes_admin`(`id_mensaje`, `datos`) VALUES ('$id_mensaje','$datos')";			
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute(); 
+
+        $consulta = "SELECT `id_mensaje`, `id_usuario`, `fecha`, `mensaje`, `datos` FROM `mensajes_admin` ORDER BY `id_mensaje` DESC LIMIT 1";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();
+        $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+        break;
+    case 2: //modificación
+        $consulta = "UPDATE `mensajes_admin` SET `id_mensaje`='$id_mensaje',`datos`='$datos' WHERE `id_mensaje`='$id_mensaje'";		
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();        
+        
+        $consulta = "SELECT `id_mensaje`, `id_usuario`, `fecha`, `mensaje`, `datos` FROM `mensajes_admin` WHERE `id_mensaje`='$id_mensaje'";       
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();
+        $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+        break;        
+    case 3://baja
+        $consulta = "DELETE FROM `mensajes_admin` WHERE `id_mensaje`='$id_mensaje'";		
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();
+                                
+        break;        
+}
+
+print json_encode($data, JSON_UNESCAPED_UNICODE); //enviar el array final en formato json a JS
+$conexion = NULL;

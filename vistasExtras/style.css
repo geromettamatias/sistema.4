@@ -1,0 +1,30 @@
+:root{
+	--dark:#0D1C23;
+	--dark-x:#1e2126;
+	--light:#ffffff;
+}
+
+
+body{
+	font-family: 'Spartan', 'sans-serif';
+	font-weight: 300;
+	color: var(--light);
+	 background: -webkit-linear-gradient(to right, #145A32, #05AFF9);
+  background: linear-gradient(to right, #145A32, #05AFF9);
+}
+
+
+
+
+
+.bg-dark-x {background-color: var(--dark-x);}
+
+.form-control, .btn {
+	min-height: 3.125rem;
+	line-height: initial;
+}
+
+.img-logo{
+	width: 80px;
+}
+

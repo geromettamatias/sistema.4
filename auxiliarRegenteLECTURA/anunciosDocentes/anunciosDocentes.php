@@ -1,0 +1,100 @@
+
+<!--INICIO del cont principal-->
+<div class="container">
+ 
+<div class="container">
+        <div class="row">
+                <div class="col-lg-12">
+                  
+                <h3><u><b>Anuncios</b></u></h3>
+                 <h5><b>informe:</b><div id="anunciosLeer" style="color:#FF0000";></div></h5>
+                 
+
+                </div>
+        </div>  
+</div>    
+      
+
+        
+<!--Modal para CRUD-->
+<div class="modal fade" id="modalCRUD_anunciosDocente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <form id="formAnuncio">    
+                         
+            <div class="modal-body">
+                
+
+                <div class="form-group">
+                <label for="anunciosf" class="col-form-label">Anuncio:</label>
+                
+                <textarea class="form-control" rows="10" id="anunciosf"></textarea>
+                </div>
+               
+            
+                <h5><b><u>Aclaración:</b></u> El Texto debe poseer las etiquetas html (para que reconosca los estilos).<br><b><u>Tutoriales:</b></u><a href="http://www.manualweb.net/html/texto-basico-html/" target="_blank">Texto basico -html</a></h5>
+
+
+            </div>   
+                               
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                <button type="submit" id="btnGuardar" class="btn btn-dark">Guardar</button>
+            </div>
+        </form>    
+        </div>
+    </div>
+</div>  
+      
+  
+</div>
+
+
+ <script type="text/javascript">
+$(document).ready(function(){
+$('#imagenProceso').hide();
+anuncioDocente();
+
+    
+});
+
+
+
+
+
+function anuncioDocente() {
+
+   
+  
+        $.ajax({
+        url: "bd/anuncioLeerDocente.php",
+        type: "POST",
+        dataType: "json",
+        data: {},
+        success: function(data){  
+            console.log(data);
+
+            info = data.anuncio.informe;
+           
+
+            
+            $("#anunciosLeer").html(info);
+            $("#anunciosf").val(info);
+
+
+                  
+        }        
+    });
+}
+
+
+</script>
+
+
+

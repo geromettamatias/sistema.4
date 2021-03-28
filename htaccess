@@ -1,0 +1,53 @@
+
+# DO NOT REMOVE THIS LINE AND THE LINES BELLOW SSL_REDIRECT:eet33directorcarlossilva.edu.ar
+RewriteEngine on
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} (www\.)?eet33directorcarlossilva.edu.ar
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# DO NOT REMOVE THIS LINE AND THE LINES BELLOW SSL_REDIRECT:eet33directorcarlossilva.edu.ar
+
+
+RewriteBase /
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php
+
+
+
+< IfModule  mod_expires.c >
+  Caduca Activo en
+
+ # Images 
+  ExpiresByType image / jpeg  "acceso más 1 año de acceso" 
+  ExpiresByType image / gif  "más 1 año de acceso" 
+  ExpiresByType image / png  "más 1 año de acceso" 
+  ExpiresByType image / webp  "más 1 año de acceso" 
+  ExpiresByType image / svg + xml  " más 1 año de 
+  acceso " ExpiresByType image / x-icon  " más 1 año "
+
+  # Video 
+  ExpiresByType video / webm  "acceso más 1 año de acceso" 
+  ExpiresByType video / mp4  "más 1 año de acceso" 
+  ExpiresByType video / mpeg  "más 1 año"
+
+  # Fuentes 
+  ExpiresByType fuente / ttf  "Acceso y 1 año de" 
+  ExpiresByType fuente / OTF  "Acceso y 1 año de" 
+  ExpiresByType fuente / woff  "Acceso y 1 año de" 
+  ExpiresByType fuente / woff2  "Acceso y 1 año de" 
+  ExpiresByType application / font-woff  "Acceso más 1 año "
+
+  # CSS, JavaScript 
+  ExpiresByType text / css  "acceso más 1 mes de acceso" 
+  ExpiresByType text / javascript  "más 1 mes" 
+  ExpiresByType application / javascript  "acceso más 1 mes"
+
+  # Otros 
+  ExpiresByType application / pdf  "acceso más 1 mes" 
+  ExpiresByType image / vnd.microsoft.icon  "más 1 año" 
+</ IfModule >
